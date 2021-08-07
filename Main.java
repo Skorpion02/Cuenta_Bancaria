@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -220,7 +219,11 @@ public class Main {
     /*métodos para leer por consola, lo normal es crear una clase consola sólo con estos métodos
     como la corrección del ejercicio no lo permite*/
     private static String leerString() {
-        return new Scanner(System.in).nextLine();
+        return extracted().nextLine();
+    }
+
+    private static Scanner extracted() {
+        return new Scanner(System.in);
     }
 
     private static int leerEntero() {
@@ -229,7 +232,7 @@ public class Main {
 		sino le pasamos un numero da una NumberFormatException vamos a capturarlo
 		esto en teoria no se pide en el enunciado habria que hacerlo con todos los numericos*/
         try {
-            return new Scanner(System.in).nextInt();
+            return extracted().nextInt();
         } catch (InputMismatchException e) {
             System.out.println("Introduzca un número entero: ");
             return leerEntero();
@@ -241,7 +244,7 @@ public class Main {
     }
 
     private static double leerDouble() {
-        return new Scanner(System.in).nextDouble();
+        return extracted().nextDouble();
 		/*se podria reutilizar el método leerString, convirtiendo su
 		salida a double mediante la clase envolverte Double
 		con su método parseDouble
